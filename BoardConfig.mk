@@ -55,23 +55,22 @@ BOARD_DTB_OFFSET := 0x01f00000
 
 # Kernel Prebuilts
 BOARD_PREBUILT_BOOTIMAGE := $(KERNEL_PATH)/boot.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
 BOARD_INCLUDE_DTB_IN_BOOTIMG := false # DTB is in vendor_boot for Header v4
 BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # GKI & Modules
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 # GKI & Modules (Verified for 5.15.178)
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-BOARD_RAMDISK_USE_LZ4 := true
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.load))
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.load))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules/modules.load))
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.load
+# BOARD_SYSTEM_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.blocklist
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.load
+# BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.blocklist
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/vendor_ramdisk/modules/modules.load
+# BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules/modules.blocklist
 
 # Cmdline & Bootconfig
 BOARD_BOOTCONFIG := \
@@ -83,6 +82,7 @@ BOARD_KERNEL_CMDLINE := \
     console=ttyMSM0,115200n8 \
     earlycon=msm_geni_serial,0x04c8c000 \
     androidboot.console=ttyMSM0 \
+    androidboot.selinux=permissive \
     kasan=off \
     disable_dma32=on \
     rcu_nocbs=all \
@@ -132,62 +132,12 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 
-# Verified Boot Keys (Standard Test Keys)
-BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 4
-
-BOARD_AVB_DTBO_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_DTBO_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_DTBO_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_DTBO_ROLLBACK_INDEX_LOCATION := 3
-
-BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
-
-BOARD_AVB_VBMETA_SYSTEM := product system system_dlkm system_ext
-BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
-
-BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 5
-
-BOARD_AVB_VBMETA_VENDOR := vendor odm vendor_dlkm
-BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 6
-
-# Add hash footers for all EROFS partitions
-BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-
 # VINTF & SKUs
 DEVICE_MANIFEST_FILE := \
     $(DEVICE_PATH)/configs/vintf/manifest/manifest.xml \
     $(DEVICE_PATH)/configs/vintf/manifest/manifest_non_qmaa.xml
 DEVICE_VINTF_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/configs/vintf/manifest/compatibility_matrix.xml
-
-ODM_MANIFEST_SKUS += o19ae o19aeerp o19ap o19aperp
-ODM_MANIFEST_O19AE_FILES := $(DEVICE_PATH)/configs/vintf/manifest/manifest_o19ae.xml
-ODM_MANIFEST_O19AEERP_FILES := $(DEVICE_PATH)/configs/vintf/manifest/manifest_o19aeerp.xml
-ODM_MANIFEST_O19AP_FILES := $(DEVICE_PATH)/configs/vintf/manifest/manifest_o19ap.xml
-ODM_MANIFEST_O19APERP_FILES := $(DEVICE_PATH)/configs/vintf/manifest/manifest_o19aperp.xml
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := bengal
+ODM_MANIFEST_SKUS += o19ae
 
 # Boot Control (UFS/BSG)
 $(call soong_config_set, ufsbsg, ufsframework, bsg)
@@ -195,15 +145,28 @@ $(call soong_config_set, ufsbsg, ufsframework, bsg)
 # Display & Camera
 TARGET_SCREEN_DENSITY := 320
 $(call soong_config_set, camera, override_format_from_reserved, true)
+TARGET_USES_GRALLOC4 := true
+TARGET_USES_ION := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_DLKM := true
 AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
 AUDIO_FEATURE_ENABLED_HW_ACCELERATED_EFFECTS := true
+
+# PAL & AGM (New Implementation)
 AUDIO_FEATURE_ENABLED_AGM_HIDL := true
 AUDIO_FEATURE_ENABLED_PAL_HIDL := true
+AUDIO_FEATURE_ENABLED_LSM_HIDL := true
+AUDIO_FEATURE_ENABLED_GKI_AUDIO := true
+AUDIO_FEATURE_ENABLED_PAL := true
+
+# Core Flags
 TARGET_USES_QCOM_MM_AUDIO := true
 TARGET_PROVIDES_AUDIO_HAL := true
+
+# Multimedia (Required for Video/Audio Sync)
+TARGET_USES_QCOM_MM_AUDIO := true
+TARGET_USES_QCOM_DISPLAY_PP := true
 
 # Connectivity
 BOARD_WLAN_DEVICE := qcwcn
@@ -228,13 +191,9 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 # Init & SePolicy
 $(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):init_creek)
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-include device/xiaomi/sepolicy/SEPolicy.mk
+# include device/xiaomi/sepolicy/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-
-# DTB/DTBO
-BOARD_INCLUDE_DTB_IN_BOOTIMG := false
-BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Global LTO & Optimization
 TARGET_GLOBAL_THINLTO := true

@@ -18,7 +18,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 -include vendor/lineage-priv/keys/keys.mk
 
 # Gapps
--include vendor/gms/products/gms.mk
+# -include vendor/gms/products/gms.mk
 
 # Gapps config
 TARGET_SUPPORTS_GOOGLE_RECORDER := true
@@ -45,4 +45,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="creek_p_global-user 16 BP2A.250605.031.A3 OS3.0.10.0.WBOMIXM release-keys" \
-    BuildFingerprint=POCO/creek_p_global/creek:16/BP2A.250605.031.A3/OS3.0.10.0.WBOMIXM:user/release-keys
+    BuildFingerprint="POCO/creek_p_global/creek:16/BP2A.250605.031.A3/OS3.0.10.0.WBOMIXM:user/release-keys"
