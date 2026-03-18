@@ -59,7 +59,7 @@ blob_fixups: blob_fixups_user_type = {
 }
 
 module = ExtractUtilsModule(
-    'sapphire',
+    'creek',
     'xiaomi',
     blob_fixups=blob_fixups,
     check_elf=False,
