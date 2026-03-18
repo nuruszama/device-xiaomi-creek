@@ -1,4 +1,4 @@
-Copyright (C) 2024 The LineageOS Project
+Copyright (C) 2025 The LineageOS Project
 
 Device configuration for Redmi 15 4G / POCO M7 4G
 =========================================
