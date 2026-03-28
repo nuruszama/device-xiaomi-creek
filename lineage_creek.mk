@@ -33,7 +33,7 @@ TARGET_EXCLUDES_AUDIOFX := true
 
 # Device configs
 TARGET_BOOT_ANIMATION_RES = 1080
-TARGET_HAS_UDFPS := true
+TARGET_HAS_UDFPS := false
 
 PRODUCT_NAME := lineage_creek
 PRODUCT_DEVICE := creek
