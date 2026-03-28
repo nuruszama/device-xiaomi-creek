@@ -142,11 +142,24 @@ ODM_MANIFEST_SKUS += o19ae
 # Boot Control (UFS/BSG)
 $(call soong_config_set, ufsbsg, ufsframework, bsg)
 
-# Display & Camera
-TARGET_SCREEN_DENSITY := 320
+# QCOM Display (SM8450 / Bengal Family)
 $(call soong_config_set, camera, override_format_from_reserved, true)
+TARGET_USES_QCOM_DISPLAY_CUSTOM := true
+TARGET_SCREEN_DENSITY := 320
 TARGET_USES_GRALLOC4 := true
 TARGET_USES_ION := true
+
+# Gralloc & Graphics Logic
+# This ensures the new source can talk to your older stock blobs
+TARGET_USES_NEW_ION_API := true
+TARGET_USES_COLOR_METADATA := true
+TARGET_USES_DRM_PP := true
+
+# SurfaceFlinger (Android 16 optimization)
+# SM6225/Bengal needs this to prevent UI stuttering
+TARGET_HAS_WIDE_COLOR_DISPLAY := true
+TARGET_HAS_HDR_DISPLAY := true
+TARGET_USE_NATIVE_IWC_DATASPACE := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_DLKM := true
