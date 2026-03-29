@@ -10,6 +10,9 @@
 DEVICE_PATH := device/xiaomi/creek
 KERNEL_PATH := device/xiaomi/creek/prebuilt
 
+PRODUCT_SOONG_NAMESPACES += \
+     device/xiaomi/creek
+
 # Broken Rules (Required for blob compatibility)
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
