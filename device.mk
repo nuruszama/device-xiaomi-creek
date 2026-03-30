@@ -5,6 +5,8 @@
 #
 
 DEVICE_PATH := device/xiaomi/creek
+PRODUCT_SOONG_NAMESPACES += \
+     device/xiaomi/creek
 
 # Inherit from Qualcomm common and storage definitions
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
