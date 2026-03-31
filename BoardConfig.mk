@@ -7,6 +7,8 @@
 DEVICE_PATH := device/xiaomi/creek
 KERNEL_PATH := device/xiaomi/creek/prebuilt
 
+SOONG_ALLOW_MISSING_DEPENDENCIES := true
+
 # Broken Rules (Required for blob compatibility)
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -97,6 +99,9 @@ BOARD_KERNEL_CMDLINE := \
 AB_OTA_UPDATER := true
 BOARD_USES_METADATA_PARTITION := true
 BOARD_SUPER_PARTITION_METADATA_DEVICE := super
+BOARD_VIRTUAL_AB_OTAPREOPT := true
+BOARD_VIRTUAL_AB_COMPRESSION := true
+BOARD_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 AB_OTA_PARTITIONS += \
     boot dtbo init_boot odm product system system_dlkm system_ext vbmeta vbmeta_system vendor vendor_boot vendor_dlkm
 
