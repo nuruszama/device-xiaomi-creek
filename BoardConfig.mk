@@ -9,7 +9,6 @@ KERNEL_PATH := device/xiaomi/creek/prebuilt
 
 # Android 16 Build Environment
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
-BOARD_API_LEVEL := 202504
 BOARD_SHIPPING_API_LEVEL := 34
 
 # Broken Rules (Required for blob compatibility)
