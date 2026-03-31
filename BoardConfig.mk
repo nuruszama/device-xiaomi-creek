@@ -37,6 +37,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # Kernel - Configuration
 TARGET_KERNEL_ARCH := arm64
