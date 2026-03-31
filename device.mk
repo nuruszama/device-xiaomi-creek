@@ -5,10 +5,15 @@
 #
 
 DEVICE_PATH := device/xiaomi/creek
-PRODUCT_SOONG_NAMESPACES += device/xiaomi/creek
+DEVICE_PATH := device/xiaomi/creek
+
+# Soong Namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    device/xiaomi/creek \
+    hardware/qcom-caf/sm6225 \
+    vendor/qcom/opensource/commonsys-intf/display
 
 # Inherit from Qualcomm common and storage definitions
-$(call inherit-product, hardware/qcom-caf/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
