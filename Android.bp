@@ -5,7 +5,6 @@ soong_namespace {
         "hardware/qcom-caf/sm6225/audio",
         "hardware/qcom-caf/sm6225/media",
         "hardware/xiaomi",
-        "vendor/xiaomi/miuicamera",
     ],
 }
 
