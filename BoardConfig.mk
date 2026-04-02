@@ -37,7 +37,7 @@ TARGET_BOARD_SUFFIX := _515
 TARGET_BOOTLOADER_BOARD_NAME := bengal
 
 # Hardware Path Redirection
-TARGET_HAL_PATH := hardware/qcom-caf/sm6225
+# TARGET_HAL_PATH := hardware/qcom-caf/sm6225
 
 # Partition Mapping - Required for Android 16
 TARGET_COPY_OUT_VENDOR := vendor
@@ -229,7 +229,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Init & SePolicy
-$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):init_creek)
+# $(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):init_creek)
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 # include device/xiaomi/sepolicy/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
