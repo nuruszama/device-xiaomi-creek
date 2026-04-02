@@ -11,7 +11,6 @@ PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/creek \
     hardware/qcom-caf/sm6225 \
     hardware/xiaomi \
-    vendor/xiaomi/miuicamera \
     vendor/qcom/opensource/commonsys-intf/display
 
 # Inherit from Qualcomm common and storage definitions
@@ -89,6 +88,7 @@ PRODUCT_PACKAGES += \
 # Overlays
 PRODUCT_PACKAGES += \
     FrameworksResCreek \
+    Aperture \
     SettingsResCreek \
     SystemUIResCreek \
     WifiResCreek
@@ -98,9 +98,6 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink \
     firmware_wlanmdsp.mbn_symlink
-
-# MIUI Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
 
 # Inherit from the proprietary vendor version
 $(call inherit-product, vendor/xiaomi/creek/creek-vendor.mk)
