@@ -5,20 +5,21 @@
 #
 
 DEVICE_PATH := device/xiaomi/creek
-DEVICE_PATH := device/xiaomi/creek
 
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/creek \
     hardware/qcom-caf/sm6225 \
+    hardware/xiaomi \
+    vendor/xiaomi/miuicamera \
     vendor/qcom/opensource/commonsys-intf/display
 
 # Inherit from Qualcomm common and storage definitions
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
-# Dalvik VM configs for 6GB RAM
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+# Dalvik VM configs for 8GB RAM
+$(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
 # A/B Partition Post-install
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -87,7 +88,6 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    ApertureResCreek \
     FrameworksResCreek \
     SettingsResCreek \
     SystemUIResCreek \
@@ -98,6 +98,9 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink \
     firmware_wlanmdsp.mbn_symlink
+
+# MIUI Camera
+$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
 
 # Inherit from the proprietary vendor version
 $(call inherit-product, vendor/xiaomi/creek/creek-vendor.mk)
