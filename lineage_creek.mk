@@ -24,7 +24,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 TARGET_SUPPORTS_GOOGLE_RECORDER := true
 TARGET_INCLUDE_STOCK_ARCORE := false
 TARGET_INCLUDE_GOOGLE_COMMS := true
-TARGET_INCLUDE_PIXEL_LAUNCHER := false
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
 TARGET_INCLUDE_LIVE_WALLPAPERS := false
 WITH_GMS := true
 
@@ -34,6 +34,9 @@ TARGET_EXCLUDES_AUDIOFX := true
 # Device configs
 TARGET_BOOT_ANIMATION_RES = 1080
 TARGET_HAS_UDFPS := false
+
+# Remove default LineageOS Camera to use MIUI Camera instead
+PRODUCT_PACKAGES_REMOVE += Aperture
 
 PRODUCT_NAME := lineage_creek
 PRODUCT_DEVICE := creek
