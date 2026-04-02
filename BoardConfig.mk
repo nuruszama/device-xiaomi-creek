@@ -52,12 +52,8 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_VERSION := 5.15
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_FORCE_PREBUILT_KERNEL := true
-TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_GENERATED_KERNEL_HEADERS := false
 
 # Boot Image Headers & Offsets (AIK Derived)
-BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -66,22 +62,39 @@ BOARD_TAGS_OFFSET := 0x00000100
 BOARD_DTB_OFFSET := 0x01f00000
 
 # Kernel Prebuilts
-BOARD_PREBUILT_BOOTIMAGE := $(KERNEL_PATH)/boot.img
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
-BOARD_INCLUDE_DTB_IN_BOOTIMG := false # DTB is in vendor_boot for Header v4
 BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_GENERATED_KERNEL_HEADERS := false
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
 
 # GKI & Modules
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_INIT_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
+# DTB & DTBO
+BOARD_USES_DT := true
+BOARD_PREBUILT_BOOTIMAGE := $(KERNEL_PATH)/boot.img
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
+BOARD_INCLUDE_DTB_IN_BOOTIMG := false # DTB is in vendor_boot for Header v4
+
 # GKI & Modules (Verified for 5.15.178)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.load
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.load))
 # BOARD_SYSTEM_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.blocklist
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.load
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.load))
 # BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_dlkm/lib/modules/modules.blocklist
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(KERNEL_PATH)/vendor_ramdisk/modules/modules.load
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules/modules.load))
 # BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules/modules.blocklist
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/5.15.178) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/lib/modules/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_ramdisk/modules/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 
 # Cmdline & Bootconfig
 BOARD_BOOTCONFIG := \
