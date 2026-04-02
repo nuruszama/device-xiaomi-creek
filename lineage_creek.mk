@@ -36,7 +36,7 @@ TARGET_BOOT_ANIMATION_RES = 1080
 TARGET_HAS_UDFPS := false
 
 # Remove default LineageOS Camera to use MIUI Camera instead
-PRODUCT_PACKAGES_REMOVE += Aperture
+# PRODUCT_PACKAGES_REMOVE += Aperture
 
 PRODUCT_NAME := lineage_creek
 PRODUCT_DEVICE := creek
