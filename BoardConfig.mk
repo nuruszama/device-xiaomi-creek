@@ -36,6 +36,9 @@ TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
 TARGET_BOOTLOADER_BOARD_NAME := bengal
 
+# Hardware Path Redirection
+TARGET_HAL_PATH := hardware/qcom-caf/sm6225
+
 # Partition Mapping - Required for Android 16
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
