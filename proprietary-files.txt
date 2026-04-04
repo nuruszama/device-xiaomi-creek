@@ -46,8 +46,10 @@ vendor/lib/rfsa/adsp/misound_karaokemix_res.bin
 vendor/lib/rfsa/adsp/misound_res_headphone.bin
 vendor/lib/rfsa/adsp/misound_res_spk.bin
 
-# ANT
+# SENSORS / MISC
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib64/hw/vibrator.default.so
 
 # System Helpers
 vendor/lib64/vendor.qti.hardware.servicetracker@1.0.so
@@ -82,6 +84,9 @@ vendor/lib64/libmcs.so
 vendor/lib64/libpalclient.so
 vendor/lib64/libqtigefar.so
 vendor/lib64/vendor.qti.hardware.pal@1.0.so
+vendor/lib64/hw/audio.primary.default.so
+vendor/lib64/hw/audio.r_submix.default.so
+vendor/lib64/hw/audio.usb.default.so
 
 # Audio Graph Manager Binaries & Libs
 -vendor/lib64/libagm.so
@@ -127,6 +132,7 @@ vendor/lib64/lib_bt_ble.so
 vendor/lib64/lib_bt_bundle.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 
 # Bluetooth Audio Offload (QTI Specific)
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
@@ -239,6 +245,7 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/com.qti.chiusecaseselector.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
+vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
 
 # Camera - Sensor & EEPROM Binaries
 vendor/lib64/camera/com.qti.eeprom.irs2381c_polar.so
@@ -616,6 +623,8 @@ vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib64/libdisplayfeature.so
 vendor/lib64/libdisplayfeatureservice.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
+vendor/lib64/hw/local_time.default.so
+vendor/lib64/hw/power.default.so
 
 # Display - Configs & XMLs
 vendor/etc/display/advanced_sf_offsets.xml
@@ -638,6 +647,7 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
+vendor/lib64/hw/gralloc.default.so
 
 # Hardware - Xiaomi Misc Implementations
 vendor/lib64/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
@@ -803,7 +813,7 @@ vendor/etc/media_profiles_khaje_iot.xml
 vendor/etc/media_khaje_v0/video_system_specs.json
 
 # Wifi & Connectivity Overlays
-
+vendor/lib64/hw/vendor.qti.hardware.wifidisplaysession@1.0-impl.so
 
 # NFC & Radio (NXP & ANT+)
 vendor/etc/libnfc-nci.conf
