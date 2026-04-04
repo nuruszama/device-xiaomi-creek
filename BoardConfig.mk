@@ -16,6 +16,9 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
 BOARD_HAS_REMOVABLE_STORAGE := true
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_PREBUILT_UI_HAL := true
+BUILD_BROKEN_MISSING_PGO_STATS := true
 
 # Primary Architecture (64-bit)
 TARGET_ARCH := arm64
@@ -35,9 +38,6 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
 TARGET_BOOTLOADER_BOARD_NAME := bengal
-
-# Hardware Path Redirection
-# TARGET_HAL_PATH := hardware/qcom-caf/sm6225
 
 # Partition Mapping - Required for Android 16
 TARGET_COPY_OUT_VENDOR := vendor
@@ -169,9 +169,8 @@ ODM_MANIFEST_SKUS += o19ae
 # Boot Control (UFS/BSG)
 $(call soong_config_set, ufsbsg, ufsframework, bsg)
 
-# QCOM Display (SM8450 / Bengal Family)
+# QCOM Display (Bengal Family)
 $(call soong_config_set, camera, override_format_from_reserved, true)
-TARGET_USES_QCOM_DISPLAY_CUSTOM := true
 TARGET_SCREEN_DENSITY := 320
 TARGET_USES_GRALLOC4 := true
 TARGET_USES_ION := true
@@ -202,7 +201,6 @@ AUDIO_FEATURE_ENABLED_PAL := true
 
 # Core Flags
 TARGET_USES_QCOM_MM_AUDIO := true
-TARGET_PROVIDES_AUDIO_HAL := true
 
 # Multimedia (Required for Video/Audio Sync)
 TARGET_USES_QCOM_MM_AUDIO := true
