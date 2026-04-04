@@ -42,6 +42,10 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
     audio.primary.bengal \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.allocator@4.0-service \
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.gnss@1.0-service
     libar-pal \
     libagm \
     libagmclient \
