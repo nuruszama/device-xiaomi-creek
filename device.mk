@@ -9,7 +9,6 @@ DEVICE_PATH := device/xiaomi/creek
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/creek \
-    hardware/qcom-caf/sm6225 \
     hardware/xiaomi \
     vendor/qcom/opensource/commonsys-intf/display
 
