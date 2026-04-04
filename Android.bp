@@ -1,9 +1,6 @@
 soong_namespace {
     imports: [
         "hardware/qcom-caf/bootctrl",
-        "hardware/qcom-caf/sm6225/display",
-        "hardware/qcom-caf/sm6225/audio",
-        "hardware/qcom-caf/sm6225/media",
         "hardware/xiaomi",
     ],
 }
