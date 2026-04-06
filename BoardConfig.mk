@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024 The LineageOS Project
+# Copyright (C) 2026 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -9,7 +9,7 @@ KERNEL_PATH := device/xiaomi/creek/prebuilt
 
 # Android 16 Build Environment
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
-BOARD_SHIPPING_API_LEVEL := 34
+BOARD_SHIPPING_API_LEVEL := 35
 
 # Broken Rules (Required for blob compatibility)
 BUILD_BROKEN_DUP_RULES := true
@@ -81,7 +81,9 @@ BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_USES_DT := true
 BOARD_PREBUILT_BOOTIMAGE := $(KERNEL_PATH)/boot.img
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
+BOARD_PREBUILT_DTBIMAGE := $(KERNEL_PATH)/dtbs/dtb.img
 BOARD_INCLUDE_DTB_IN_BOOTIMG := false # DTB is in vendor_boot for Header v4
+BOARD_INCLUDE_DTB_IN_VENDOR_BOOT := true
 
 # GKI & Modules (Verified for 5.15.178)
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/lib/modules/5.15.178/modules.load))
@@ -120,6 +122,7 @@ BOARD_SUPER_PARTITION_METADATA_DEVICE := super
 BOARD_VIRTUAL_AB_OTAPREOPT := true
 BOARD_VIRTUAL_AB_COMPRESSION := true
 BOARD_VIRTUAL_AB_COMPRESSION_METHOD := lz4
+BOARD_VIRTUAL_AB_COW_VERSION := 3
 AB_OTA_PARTITIONS += \
     boot dtbo init_boot odm product system system_dlkm system_ext vbmeta vbmeta_system vendor vendor_boot vendor_dlkm
 
@@ -174,6 +177,8 @@ $(call soong_config_set, camera, override_format_from_reserved, true)
 TARGET_SCREEN_DENSITY := 320
 TARGET_USES_GRALLOC4 := true
 TARGET_USES_ION := true
+TARGET_USES_QTI_MAPPER_2_0 := true
+TARGET_USES_QTI_MAPPER_EXT_1_1 := true
 
 # Gralloc & Graphics Logic
 # This ensures the new source can talk to your older stock blobs
@@ -194,6 +199,7 @@ AUDIO_FEATURE_ENABLED_HW_ACCELERATED_EFFECTS := true
 TARGET_AUDIO_SKIP_SPEAKER_LAYOUT_CHANNEL_MASK_FIELD := "true"
 
 # PAL & AGM (New Implementation)
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 AUDIO_FEATURE_ENABLED_AGM_HIDL := true
 AUDIO_FEATURE_ENABLED_PAL_HIDL := true
 AUDIO_FEATURE_ENABLED_LSM_HIDL := true
@@ -236,6 +242,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Global LTO & Optimization
 TARGET_GLOBAL_THINLTO := true
+BOARD_GLOBAL_LTO_CPPFLAGS := -O3
 HWUI_COMPILE_FOR_PERF := true
 
 # Hardware Features
