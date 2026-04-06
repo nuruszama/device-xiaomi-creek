@@ -37,8 +37,6 @@ $(call soong_config_set, android_hardware_audio, run_64bit, true)
 $(call soong_config_set, android_hardware_audio, skip_speaker_layout_channel_mask_field, true)
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@7.0-impl \
-    android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
     audio.primary.bengal \
     android.hardware.graphics.composer@2.1-service \
@@ -50,6 +48,8 @@ PRODUCT_PACKAGES += \
     libagmclient \
     vendor.qti.hardware.pal@1.0.vendor \
     vendor.qti.hardware.AGMIPC@1.0.vendor \
+    adsprpcd \
+    cdsprpcd \
     audioadsprpcd
 
 PRODUCT_COPY_FILES += \
@@ -72,7 +72,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fingerprint & Input
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.xiaomi \
-    vendor.xiaomi.hardware.fingerprintextension@1.0.vendor \
     vendor.xiaomi.hw.touchfeature@1.0-service
 
 # NFC (Creek SKU Fix: o19ae)
@@ -84,9 +83,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     mi_thermald \
     batterysecret \
-    vendor.xiaomi.hardware.misys@1.0.vendor \
-    vendor.xiaomi.hardware.misys@2.0.vendor \
-    vendor.xiaomi.hardware.misys@3.0.vendor
+    vendor.xiaomi.hardware.misys@4.0.vendor
 
 # Overlays
 PRODUCT_PACKAGES += \
