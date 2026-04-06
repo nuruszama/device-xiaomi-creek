@@ -10,7 +10,9 @@ DEVICE_PATH := device/xiaomi/creek
 PRODUCT_SOONG_NAMESPACES += \
     device/xiaomi/creek \
     hardware/xiaomi \
-    vendor/qcom/opensource/commonsys-intf/display
+    hardware/qcom-caf/sm8250 \
+    vendor/qcom/opensource/commonsys-intf/display \
+    vendor/qcom/opensource/commonsys-intf/interfaces
 
 # Inherit from Qualcomm common and storage definitions
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
@@ -43,6 +45,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@4.0-service \
     android.hardware.camera.provider@2.4-service \
     android.hardware.gnss@1.0-service \
+    libdisplayconfig.qti \
+    vendor.qti.hardware.display.mapper@4.0.vendor \
+    libgui_vendor \
+    libgralloctypes \
     libar-pal \
     libagm \
     libagmclient \
