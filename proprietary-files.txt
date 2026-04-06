@@ -456,7 +456,6 @@ vendor/bin/panelcolor_bin
 vendor/bin/ppd
 vendor/lib64/libdisplayconfig.qti.so
 vendor/lib64/libdpps.so
-vendor/lib64/libqdcmss.so
 vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-disp-vndapis.so
 
@@ -950,8 +949,6 @@ vendor/etc/libnfc-nxp.conf
 vendor/etc/libnfc-nci.conf
 vendor/etc/IPACM_cfg.xml
 vendor/etc/wfdconfig.xml
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlanmdsp.otaupdate
 vendor/firmware/wigig.ini
 vendor/lib64/libcld80211.so
 vendor/lib64/libbt-hidlclient.so
@@ -967,7 +964,6 @@ vendor/lib64/libqcrilNrPbmModule.so
 vendor/lib64/libqcrilNrCellInfoModule.so
 vendor/lib64/libqcrilNrLogger.so
 vendor/lib64/libqcrilNrSocketModule.so
-vendor/lib64/libqcrilNrQmiModule.so
 vendor/lib64/libqcrilNrQtiBus.so
 vendor/lib64/qcrilNrSecureMode.so
 vendor/lib64/qcrilNr_aidl_IRadioModem.so
@@ -1490,7 +1486,6 @@ vendor/etc/vintf/manifest/android.hardware.boot@1.2.xml
 
 # Vendor APKs (Functional Services)
 vendor/app/CneApp/CneApp.apk
-vendor/app/CneApp/lib/arm64/libvndfwk_detect_jni.qti_vendor.so
 vendor/app/IWlanService/IWlanService.apk
 vendor/app/TimeService/TimeService.apk
 vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
