@@ -1,0 +1,474 @@
+# All blobs below are extracted from creek OS3.0.10.0.WBOMIXM
+
+# Architecture / SoC
+vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
+vendor/lib/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
+vendor/lib/hw/vendor.qti.memory.pasrmanager@1.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
+vendor/lib64/hw/vendor.qti.memory.pasrmanager@1.0-impl.so
+vendor/bin/hw/vendor.qti.hardware.iop@2.0-service
+vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
+vendor/bin/hw/vendor.qti.hardware.servicetracker@1.2-service
+vendor/bin/hw/vendor.qti.memory.pasrmanager@1.0-service
+vendor/bin/hw/vendor.qti.psiclient@1.0-service
+vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
+vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc
+vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc
+vendor/etc/init/vendor.qti.memory.pasrmanager@1.0-service.rc
+vendor/etc/init/vendor.qti.psiclient@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.factory@1.0-service.rc
+vendor/etc/init/vendor.qti.adsprpc-guestos-service.rc
+vendor/etc/init/vendor.qti.audio-adsprpc-service.rc
+vendor/etc/init/vendor.qti.cdsprpc-service.rc
+vendor/etc/init/diagcommd.rc
+vendor/etc/init/vendor.qti.diag.rc
+vendor/etc/public.libraries.txt
+vendor/etc/msm_irqbalance.conf
+vendor/etc/xtwifi.conf
+vendor/etc/group
+vendor/etc/passwd
+vendor/etc/mkshrc
+
+# Architecture / SoC (IPA & Data)
+vendor/firmware/ipa_fws.b00
+vendor/firmware/ipa_fws.b01
+vendor/firmware/ipa_fws.b02
+vendor/firmware/ipa_fws.b03
+vendor/firmware/ipa_fws.b04
+vendor/firmware/ipa_fws.elf
+vendor/firmware/ipa_fws.mdt
+vendor/firmware/sipa.bin
+
+# Boot / Thermal
+vendor/lib/hw/android.hardware.boot@1.0-impl-1.2-qti.so
+vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
+vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2-qti.so
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
+vendor/bin/hw/android.hardware.boot@1.2-service
+vendor/bin/hw/android.hardware.thermal@2.0-service.qti-v2:vendor/bin/hw/android.hardware.thermal@2.0-service.qti
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
+vendor/bin/hw/vendor.qti.hardware.limits@1.2-service
+vendor/etc/init/android.hardware.boot@1.2-service.rc
+vendor/etc/init/android.hardware.thermal@2.0-service.qti-v2.rc:
+vendor/etc/init/init_thermal-engine-v2.rc
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.limits-service.rc
+vendor/etc/thermal-engine.conf
+vendor/etc/thermal-map.conf
+vendor/etc/thermald-devices.conf
+
+# Thermal & Time
+vendor/bin/thermal-engine-v2
+vendor/bin/time_daemon
+vendor/lib64/libtime_genoff.so
+
+# Perf / Power
+vendor/lib/hw/power.default.so
+vendor/lib64/hw/power.default.so
+vendor/bin/hw/android.hardware.power-service
+vendor/bin/hw/vendor.qti.hardware.perf-hal-service
+vendor/bin/hw/android.hardware.health-service.qti
+vendor/etc/init/android.hardware.power-service.rc
+vendor/etc/init/vendor.qti.hardware.perf-hal-service.rc
+vendor/etc/init/android.hardware.health-service.qti.rc
+vendor/etc/init/vendor.qti.battery_stats.rc
+vendor/etc/powerhint.xml
+vendor/etc/battery_info.xml
+
+# Performance & Thermal Tuning
+vendor/etc/perf/targetconfig.xml
+vendor/etc/perf/perfboostsconfig.xml
+vendor/etc/perf/perfconfigstore.xml
+vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/targetresourceconfigs.xml
+vendor/etc/perf/thermalboost.conf
+
+# Performance & Memory
+vendor/lib64/vendor.qti.hardware.perf@2.3.so
+vendor/lib/vendor.qti.memory.pasrmanager@1.1.so
+
+# TrustZone / Security
+vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+vendor/lib/hw/vendor.qti.hardware.qseecom@1.0-impl.so
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/bin/hw/android.hardware.security.keymint-service-qti
+vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
+vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
+vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+vendor/bin/hw/vendor.qti.hardware.secureprocessor@1.0
+vendor/etc/init/android.hardware.security.keymint-service-qti.rc
+vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
+vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.secureprocessor@1.0.rc
+vendor/etc/init/qseecomd.rc
+vendor/etc/init/ssgtzd.rc
+vendor/lib/libQSEEComAPI.so
+vendor/lib/libkeymasterutils.so
+vendor/lib/librpmb.so
+vendor/lib64/vendor.qti.hardware.secureprocessor.common@1.0.so
+
+# Security Core Binary
+vendor/bin/qseecomd
+
+# Secure Systems (SSG / TrustZone Config)
+vendor/etc/ssg/ta_config.json
+vendor/etc/ssg/tz_whitelist.json
+
+# Security and DRM Libraries
+vendor/lib64/liboemcrypto.so
+vendor/lib64/libqtikeymint.so
+vendor/lib64/libqtikeymaster4.so
+
+# Security Policies (Seccomp) - Mandatory
+vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
+vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
+vendor/etc/seccomp_policy/qcrilnr@2.0.policy
+vendor/etc/seccomp_policy/gnss@2.0-base.policy
+vendor/etc/seccomp_policy/atfwd@2.0.policy
+vendor/etc/seccomp_policy/wifidisplayhalservice.policy
+
+# Core Hardware HALs (VINTF Manifests)
+vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml
+vendor/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml
+vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
+vendor/etc/vintf/manifest/power.xml
+vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.perf.xml
+
+# Alarm (Hardware Power-Off Alarm)
+vendor/bin/power_off_alarm
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+
+# Audio - Primary HAL and Service
+vendor/lib/hw/audio.primary.bengal.so
+vendor/lib64/hw/audio.primary.bengal.so
+vendor/bin/hw/android.hardware.audio.service_64
+vendor/etc/init/android.hardware.audio.service_64.rc
+
+# Audio Configuration Files (Essential for Routing)
+vendor/etc/audio_policy_configuration.xml
+vendor/etc/mixer_paths_bengal_idp.xml
+vendor/etc/resourcemanager_bengal_idp.xml
+vendor/etc/audio_effects.xml
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/default_volume_tables.xml
+vendor/etc/microphone_characteristics.xml
+vendor/etc/usb_audio_policy_configuration.xml
+
+# Audio Calibration (ACDB) - Basic tuning
+vendor/etc/acdbdata/bengal_idp/IDP_acdb_cal.acdb
+vendor/etc/acdbdata/bengal_idp/IDP_workspaceFileXml.qwsp
+
+# Speaker Firmware
+vendor/etc/spk_pb_top.wav
+vendor/etc/spk_pb_bot.wav
+vendor/firmware/frsm-spk1.bin
+
+# DSP RPC Daemons (Essential for Hardware Communication)
+vendor/bin/adsprpcd
+vendor/bin/cdsprpcd
+vendor/bin/audioadsprpcd
+vendor/lib64/libadsp_default_listener.so
+
+# Display / Graphics Core HALs
+vendor/bin/hw/vendor.qti.hardware.display.allocator-service
+vendor/bin/hw/vendor.qti.hardware.display.composer-service
+vendor/bin/hw/vendor.qti.hardware.memtrack-service
+vendor/etc/init/vendor.qti.hardware.display.allocator-service.rc
+vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
+vendor/etc/init/memtrack_qti.rc
+vendor/etc/init/init.qti.display_boot.rc
+vendor/lib64/vendor.qti.hardware.display.mapper@4.0.so
+
+# Display Panel & Calibration Data
+vendor/etc/qdcm_calib_data_o19a_43_10_0b_video_mode_fhd_dsi_panel.xml
+vendor/etc/mdss_dsi_panel_o19a_43_10_0b_fhd_video_mi.xml
+vendor/etc/display/advanced_sf_offsets.xml
+
+# GPU Firmware (Adreno 610/662)
+vendor/firmware/a662_gmu.bin
+vendor/firmware/a662_zap.b00
+vendor/firmware/a662_zap.b01
+vendor/firmware/a662_zap.b02
+vendor/firmware/a662_zap.elf
+vendor/firmware/a662_zap.mbn
+vendor/firmware/a662_zap.mdt
+vendor/firmware/a660_sqe.fw
+vendor/gpu/kbc/unified_kbcs_64.bin
+vendor/gpu/kbc/unified_kbcs_32.bin
+vendor/gpu/kbc/unified_ksqs.bin
+vendor/gpu/kbc/sequence_manifest.bin
+
+# Graphics Libraries (Adreno & EGL)
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib64/egl/libEGL_adreno.so
+vendor/lib64/egl/libGLESv1_CM_adreno.so
+vendor/lib64/egl/libGLESv2_adreno.so
+vendor/lib64/libadreno_utils.so
+vendor/lib64/libgsl.so
+vendor/lib64/libllvm-qcom.so
+
+# SDM Core (Display Strategy)
+vendor/lib64/libsdmcore.so
+vendor/lib64/libsdmutils.so
+vendor/lib64/libqdutils.so
+vendor/lib64/libdisplayconfig.qti.so
+
+# Camera - Minimalist Provider only
+vendor/bin/hw/android.hardware.camera.provider@2.4-service_64
+vendor/etc/init/android.hardware.camera.provider@2.4-service_64.rc
+vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
+vendor/lib64/hw/camera.qcom.so
+
+# Media / Codecs (Core Hardware Video Support)
+vendor/bin/hw/android.hardware.media.omx@1.0-service
+vendor/bin/hw/vendor.qti.media.c2@1.0-service
+vendor/bin/hw/android.hardware.cas@1.2-service
+vendor/etc/init/android.hardware.media.omx@1.0-service.rc
+vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
+vendor/etc/init/android.hardware.cas@1.2-service.rc
+vendor/etc/init/init.qti.media.rc
+vendor/etc/media_codecs.xml
+vendor/etc/media_codecs_bengal_v1.xml
+vendor/etc/media_codecs_performance_bengal_v1.xml
+vendor/etc/media_profiles_bengal_v1.xml
+vendor/etc/media_codecs_vendor_audio.xml
+
+# Firmware - GPU Secure Assets (Mandatory for Display)
+vendor/firmware/a610_zap.b00
+vendor/firmware/a610_zap.b01
+vendor/firmware/a610_zap.b02
+vendor/firmware/a610_zap.elf
+vendor/firmware/a610_zap.mdt
+vendor/firmware/gmu_gen70000.bin
+
+# Video - Venus Firmware (Hardware Acceleration)
+vendor/firmware/venus_4mb.mbn
+vendor/firmware/venus.mbn
+vendor/firmware/venus_v6.mbn
+vendor/firmware/venus_v7.mbn
+vendor/firmware/venus_v7_3.mbn
+vendor/firmware/vpu20_1v.mbn
+vendor/firmware/vpu20_4v.mbn
+
+# Connectivity - Wi-Fi Core
+vendor/bin/hw/android.hardware.wifi@1.0-service
+vendor/bin/hw/wpa_supplicant
+vendor/bin/hw/hostapd
+vendor/etc/init/android.hardware.wifi@1.0-service.rc
+vendor/etc/init/android.hardware.wifi.supplicant-service.rc
+vendor/etc/init/hostapd.android.rc
+vendor/etc/IPACM_cfg.xml
+vendor/lib64/libcld80211.so
+
+# Connectivity - Bluetooth Core
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib64/libbt-hidlclient.so
+vendor/lib64/lib_bt_bundle.so
+vendor/lib64/libbluetooth_audio_session.so
+vendor/lib64/libbluetooth_audio_session_aidl.so
+vendor/lib64/libbtnv.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/libbt-hidlclient.so
+
+# Connectivity - RIL & Data Bridge
+vendor/lib64/libqcrilNr.so
+vendor/lib64/libqcrilNrVoiceModule.so
+vendor/lib64/libqcrilNrPbmModule.so
+vendor/lib64/libqcrilNrCellInfoModule.so
+vendor/lib64/libqcrilNrLogger.so
+vendor/lib64/libqcrilNrSocketModule.so
+vendor/lib64/libqcrilNrQtiBus.so
+vendor/lib64/qcrilNrSecureMode.so
+vendor/lib64/qcrilNr_aidl_IRadioModem.so
+vendor/lib64/qcrilNr_aidl_IRadioVoice.so
+vendor/lib64/qcrilNr_aidl_IRadioSim.so
+vendor/lib64/qcrilNr_aidl_common.so
+vendor/lib64/qcrild_libqcrilnrutils.so
+vendor/lib64/qcril_client.so
+vendor/lib64/qcrilInterfaces.so
+vendor/lib64/qcrilMarshal.so
+vendor/lib64/libQtiRilLoadable.so
+vendor/lib64/libnetmgr.so
+vendor/lib64/libnetmgr_common.so
+vendor/lib64/libnetmgr_rmnet_ext.so
+vendor/lib64/libnetmgr_utils.so
+vendor/lib64/libcne.so
+vendor/lib64/qcrild_libqcrilnr.so
+
+# VINTF Manifests (Hardware Discovery)
+vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
+vendor/etc/vintf/manifest/android.hardware.usb@1.2-service.xml
+vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.xml
+
+# Wi-Fi & Data Config
+vendor/etc/wifi/WCNSS_qcom_cfg.ini
+vendor/etc/wifi/wpa_supplicant.conf
+vendor/etc/data/dsi_config.xml
+vendor/etc/data/netmgr_config.xml
+
+# GPS / GNSS Core (AIDL Implementation)
+vendor/bin/hw/android.hardware.gnss-aidl-service-qti
+vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
+vendor/lib/hw/android.hardware.gnss-aidl-impl-qti.so
+vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+vendor/etc/gps.conf
+vendor/etc/izat.conf
+
+# GPS Utils
+vendor/lib64/libgnss.so
+vendor/lib64/libgps.utils.so
+vendor/lib64/liblocation_client_api.so
+
+# Sensors Core (Snapdragon Sensor Core)
+vendor/lib64/libsnsapi.so
+vendor/lib64/libssc.so
+vendor/lib64/libsensorcal.so
+
+# Sensors - Core Service
+vendor/bin/hw/android.hardware.sensors@2.1-service.multihal
+vendor/etc/init/android.hardware.sensors@2.1-service-multihal.rc
+vendor/bin/sensors.qti
+vendor/bin/sscrpcd
+vendor/etc/init/vendor.sensors.qti.rc
+vendor/etc/init/vendor.sensors.sscrpcd.rc
+vendor/etc/init/init.vendor.sensors.rc
+
+# Sensors - Creek Specific Hardware Configs
+vendor/etc/sensors/config/creek_bma5.json
+vendor/etc/sensors/config/creek_qmc6308x_0.json
+vendor/etc/sensors/config/creek_mmc56x3x_0.json
+vendor/etc/sensors/config/creek_sx937x_0.json
+vendor/etc/sensors/config/creek_lis2doc_0.json
+vendor/etc/sensors/hals.conf
+vendor/etc/sensors/sns_reg_config
+
+# DSP & RPC (Bridges to Hardware)
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libadsprpc.so
+vendor/lib64/libcdsprpc.so
+vendor/lib64/libmdsprpc.so
+vendor/lib64/libsdsprpc.so
+
+# Peripheral Manager (Essential for Booting Modem/DSP)
+vendor/bin/pd-mapper
+vendor/bin/pm-proxy
+vendor/bin/pm-service
+vendor/lib64/libpdnotifier.so
+vendor/lib64/libperipheral_client.so
+
+# Input & Haptics (Touch and Vibration)
+vendor/bin/hw/vendor.qti.hardware.vibrator.service
+vendor/etc/init/vendor.qti.hardware.vibrator.service.rc
+odm/firmware/novatek_ts_fw_csot_erp.bin
+odm/firmware/novatek_ts_mp_csot_erp.bin
+
+# Radio - Core Daemons (Essential for Signal)
+vendor/bin/hw/qcrilNrd
+vendor/etc/init/qcrilNrd.rc
+vendor/bin/rmt_storage
+vendor/etc/init/vendor.qti.rmt_storage_qmaa.rc
+vendor/bin/tftp_server
+vendor/etc/init/vendor.qti.tftp_qmaa.rc
+vendor/bin/netmgrd
+vendor/etc/init/netmgrd.rc
+vendor/bin/ipacm
+vendor/etc/init/ipacm.rc
+vendor/bin/port-bridge
+vendor/etc/init/port-bridge.rc
+
+# Radio - QRTR & QMI Communication
+vendor/bin/qrtr-cfg
+vendor/bin/qrtr-lookup
+vendor/bin/qrtr-ns
+vendor/bin/irsc_util
+vendor/lib64/libqmi_cci.so
+vendor/lib64/libqmi_csi.so
+vendor/lib64/libqmiservices.so
+vendor/lib64/libdsi_netctrl.so
+vendor/lib64/libqcrilNrFramework.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradio-V9-ndk.so
+
+# Radio - VINTF Manifests (Mandatory for AIDL)
+vendor/etc/vintf/manifest/android.hardware.radio.network.xml
+vendor/etc/vintf/manifest/android.hardware.radio.voice.xml
+vendor/etc/vintf/manifest/android.hardware.radio.data.xml
+vendor/etc/vintf/manifest/android.hardware.radio.messaging.xml
+vendor/etc/vintf/manifest/android.hardware.radio.sim.xml
+vendor/etc/vintf/manifest/android.hardware.radio.modem.xml
+vendor/etc/vintf/manifest/android.hardware.radio.config.xml
+vendor/etc/vintf/manifest/qtiradio-saidl.xml
+
+# Radio - Databases (ECC and Signal Logic)
+vendor/etc/qcril_database/qcrilNr.db
+vendor/etc/qcril_database/upgrade/config/14.0_config.sql
+vendor/etc/qcril_database/upgrade/config/15.0_config.sql
+vendor/etc/qcril_database/upgrade/config/16.0_config.sql
+vendor/etc/qcril_database/upgrade/config/17.0_config.sql
+vendor/etc/qcril_database/upgrade/config/18.0_config.sql
+vendor/etc/qcril_database/upgrade/config/19.0_config.sql
+vendor/etc/qcril_database/upgrade/config/20.0_config.sql
+vendor/etc/qcril_database/upgrade/config/21.0_config.sql
+vendor/etc/qcril_database/upgrade/config/22.0_config.sql
+vendor/etc/qcril_database/upgrade/config/23.0_config.sql
+vendor/etc/qcril_database/upgrade/config/24.0_config.sql
+vendor/etc/qcril_database/upgrade/other/0_initial_qcrilnr.sql
+
+# Permissions (Framework Handshakes)
+vendor/etc/permissions/android.hardware.audio.low_latency.xml
+vendor/etc/permissions/android.hardware.bluetooth_le.xml
+vendor/etc/permissions/android.hardware.camera.flash-autofocus.xml
+vendor/etc/permissions/android.hardware.location.gps.xml
+vendor/etc/permissions/android.hardware.sensor.accelerometer.xml
+vendor/etc/permissions/android.hardware.sensor.compass.xml
+vendor/etc/permissions/android.hardware.sensor.light.xml
+vendor/etc/permissions/android.hardware.sensor.proximity.xml
+vendor/etc/permissions/android.hardware.telephony.ims.xml
+vendor/etc/permissions/android.hardware.wifi.xml
+vendor/etc/permissions/handheld_core_hardware.xml
+
+# Power & Thermal (Safety)
+vendor/bin/mi_thermald
+vendor/bin/hvdcp_opti
+vendor/bin/init.qti.chg_policy.sh
+vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc
+
+# Low-level QTI Helpers (Linking Essentials)
+vendor/lib64/libdiag.so
+vendor/lib64/libqrtr.so
+vendor/lib64/libqmi_common_so.so
+vendor/lib64/libqmi_client_helper.so
+vendor/lib64/libqmi_encdec.so
+vendor/lib64/libqti_vndfwk_detect.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti-util.so
+vendor/lib64/libqti-utils.so
+vendor/lib64/libpdmapper.so
+vendor/lib64/libminkdescriptor.so
+vendor/lib64/libminksocket_vendor.so
+
+# System Utils & Init
+vendor/bin/hw/android.hardware.usb@1.2-service-qti
+vendor/etc/init/android.hardware.usb@1.2-service-qti.rc
+vendor/etc/init/vndservicemanager.rc
+vendor/etc/init/hw/init.qcom.rc
+vendor/etc/init/hw/init.target.rc
+vendor/etc/init/hw/init.qcom.usb.rc
+
+# VINTF Core
+vendor/etc/vintf/manifest/android.hardware.boot@1.2.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
+
+# Touch Firmware
+odm/firmware/novatek_ts_fw_csot.bin
+odm/firmware/novatek_ts_mp_csot.bin
