@@ -1,0 +1,23 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.system_dlkm.brand=Redmi
+ro.product.system_dlkm.device=creek
+ro.product.system_dlkm.manufacturer=Xiaomi
+ro.product.system_dlkm.model=creek
+ro.product.system_dlkm.cert=creek
+ro.product.system_dlkm.name=creek_global
+ro.product.system_dlkm.marketname=creek
+ro.system_dlkm.build.date=Thu Jan 29 16:15:52 CST 2026
+ro.system_dlkm.build.date.utc=1769674552
+ro.system_dlkm.build.fingerprint=Redmi/creek_global/creek:13/TKQ1.250214.001/OS3.0.10.0.WBOMIXM:user/release-keys
+ro.system_dlkm.build.id=TKQ1.250214.001
+ro.system_dlkm.build.tags=release-keys
+ro.system_dlkm.build.type=user
+ro.system_dlkm.build.version.incremental=OS3.0.10.0.WBOMIXM
+ro.system_dlkm.build.version.release=13
+ro.system_dlkm.build.version.release_or_codename=13
+ro.system_dlkm.build.version.sdk=33
+# end of file
+
