@@ -1,6 +1,5 @@
-## Device tree for boot.img testing.
+## Device tree for testing minimal boot.
 
-Copyright (C) 2026 The LineageOS Project
 
 Device configuration for Redmi 15 4G / POCO M7 4G
 =========================================

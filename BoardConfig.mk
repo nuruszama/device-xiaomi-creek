@@ -1,5 +1,5 @@
 #
-# Minimal Boot Test BoardConfig (Creek)
+# Minimal Boot Test BoardConfig.mk (Creek)
 #
 
 DEVICE_PATH := device/xiaomi/creek
@@ -29,7 +29,16 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
 # Platform
 TARGET_BOARD_PLATFORM := bengal
+TARGET_BOARD_SUFFIX := _515
 TARGET_BOOTLOADER_BOARD_NAME := bengal
+
+# Partition Mapping
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # GKI & Modules
 BOARD_BOOT_HEADER_VERSION := 4
@@ -53,7 +62,6 @@ TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_FILE := $(KERNEL_PATH)/dtbs/dtb.img
 TARGET_FORCE_PREBUILT_KERNEL := true
-TARGET_GENERATED_KERNEL_HEADERS := false
 
 # Basic kernel cmdline (keep minimal)
 BOARD_KERNEL_CMDLINE := \
@@ -62,7 +70,9 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.selinux=permissive
 
 BOARD_BOOTCONFIG := \
-    androidboot.hardware=qcom
+    androidboot.hardware=qcom \
+    androidboot.memcg=1 \
+    androidboot.usbcontroller=4e00000.dwc3
 
 # Boot Image Headers & Offsets
 BOARD_KERNEL_PAGESIZE := 4096

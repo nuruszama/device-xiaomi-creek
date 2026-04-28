@@ -1,4 +1,6 @@
-
+#
+# Minimal Boot Test device.mk (Creek)
+#
 
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
