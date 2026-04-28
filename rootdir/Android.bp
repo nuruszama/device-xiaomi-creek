@@ -1,0 +1,68 @@
+//
+// Init configuration files for Creek (Minimal Boot)
+//
+
+prebuilt_etc {
+    name: "fstab.default",
+    src: "fstab.default",
+    vendor: true,
+    ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "init.creek.rc",
+    src: "init.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+// Vendor specific hardware init
+prebuilt_etc {
+    name: "init.vendor.sensors.rc",
+    src: "init.vendor.sensors.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.qti.display_boot.rc",
+    src: "init.qti.display_boot.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+// Core Services overrides/configs
+prebuilt_etc {
+    name: "logd.rc",
+    src: "logd.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "vold.rc",
+    src: "vold.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "lmkd.rc",
+    src: "lmkd.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "servicemanager.rc",
+    src: "servicemanager.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "vndservicemanager.rc",
+    src: "vndservicemanager.rc",
+    sub_dir: "init",
+    vendor: true,
+}
