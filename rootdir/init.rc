@@ -1,0 +1,9 @@
+on early-init
+start ueventd
+
+on init
+start logd
+start servicemanager
+
+on late-init
+start vold
