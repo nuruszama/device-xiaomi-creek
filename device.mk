@@ -33,7 +33,6 @@ PRODUCT_PACKAGES += \
     servicemanager \
     vndservicemanager \
     vold \
-    linkerconfig \
     sh \
     toolbox \
     toybox \

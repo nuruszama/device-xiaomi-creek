@@ -14,18 +14,23 @@ BUILD_BROKEN_DUP_RULES := true
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
 
+# Tell the build system to ignore missing dexpreopt artifacts
+DISABLE_DEXPREOPT_CHECK := true
+
 # Primary Architecture (64-bit)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_VARIANT_RUNTIME := cortex-a73
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo
 
 # Secondary Architecture (32-bit)
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := kryo
 
 # Platform
 TARGET_BOARD_PLATFORM := bengal
@@ -63,6 +68,11 @@ BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_FILE := $(KERNEL_PATH)/dtbs/dtb.img
 TARGET_FORCE_PREBUILT_KERNEL := true
 
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel \
+    $(BOARD_PREBUILT_DTBOIMAGE):dtbo.img \
+    $(BOARD_PREBUILT_DTBIMAGE_FILE):dtb.img
+    
 # Basic kernel cmdline (keep minimal)
 BOARD_KERNEL_CMDLINE := \
     console=ttyMSM0,115200n8 \
@@ -73,6 +83,16 @@ BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     androidboot.usbcontroller=4e00000.dwc3
+
+# Modules for First Stage (Ramdisk) - Critical for mounting /system
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/vendor_ramdisk/*.ko)
+
+# Modules for the rest of the Hardware (Vendor/System DLKM)
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/vendor_dlkm/*.ko)
+BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/system_dlkm/*.ko)
+
+# Automatically generate the load order based on dependencies
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell cat $(KERNEL_PATH)/modules/vendor_ramdisk/modules.load)
 
 # Boot Image Headers & Offsets
 BOARD_KERNEL_PAGESIZE := 4096
