@@ -3,6 +3,12 @@
 //
 
 prebuilt_etc {
+    name: "fstab.zram",
+    src: "fstab.zram",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "fstab.default",
     src: "fstab.default",
     vendor: true,

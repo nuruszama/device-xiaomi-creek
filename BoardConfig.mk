@@ -141,6 +141,15 @@ BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 0x00800000
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 0x06000000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
+# VINTF Manifests
+DEVICE_MANIFEST_FILE := device/xiaomi/creek/configs/vintf/manifest.xml
+
+# Include the Xiaomi/Qualcomm specific fragments
+DEVICE_MANIFEST_FILE += $(wildcard device/xiaomi/creek/configs/vintf/*.xml)
+
+# Include the Compatibility Matrix
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/xiaomi/creek/configs/vintf/compatibility_matrix.xml
+
 # Security & Android Verified Boot
 BOOT_SECURITY_PATCH := 2026-01-05
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)

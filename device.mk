@@ -3,11 +3,26 @@
 #
 
 # Add common definitions for Qualcomm
-#$(call inherit-product, hardware/qcom-caf/common/common.mk)
+# $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
 # Inherit from common AOSP 64-bit phone config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
+
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
+# APEX
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Ramdisk Security
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+
+# Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Inherit from the proprietary vendor version
+# $(call inherit-product, vendor/xiaomi/creek/creek-vendor.mk)
 
 # Basic Android configs
 PRODUCT_AAPT_CONFIG := normal
@@ -27,6 +42,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # CORE BOOT PACKAGES (VERY MINIMAL)
 PRODUCT_PACKAGES += \
     init.creek.rc \
+    fstab.zram \
     init.vendor.sensors.rc \
     fstab.default \
     logd \
@@ -44,6 +60,18 @@ PRODUCT_PACKAGES += \
     checkpoint_gc \
     e2fsck.recovery
 
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb-service.qti \
+    android.hardware.usb.gadget-service.qti
+
+PRODUCT_PACKAGES += \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh
+
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/usb/etc
+    
 # VINTF & Compatibility
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
