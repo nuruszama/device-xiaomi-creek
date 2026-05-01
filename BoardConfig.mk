@@ -145,7 +145,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 DEVICE_MANIFEST_FILE := device/xiaomi/creek/configs/vintf/manifest.xml
 
 # Include the Xiaomi/Qualcomm specific fragments
-DEVICE_MANIFEST_FILE += $(wildcard device/xiaomi/creek/configs/vintf/*.xml)
+DEVICE_MANIFEST_FILE += $(wildcard device/xiaomi/creek/configs/vintf/manifest/*.xml)
 
 # Include the Compatibility Matrix
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/xiaomi/creek/configs/vintf/compatibility_matrix.xml
