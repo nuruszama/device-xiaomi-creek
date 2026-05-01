@@ -37,38 +37,17 @@ prebuilt_etc {
     vendor: true,
 }
 
-// Core Services overrides/configs
+// Hardware and Target specific scripts
 prebuilt_etc {
-    name: "logd.rc",
-    src: "logd.rc",
+    name: "init.creek.hw.rc",
+    src: "init.creek.hw.rc",
     sub_dir: "init",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "vold.rc",
-    src: "vold.rc",
-    sub_dir: "init",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "lmkd.rc",
-    src: "lmkd.rc",
-    sub_dir: "init",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "servicemanager.rc",
-    src: "servicemanager.rc",
-    sub_dir: "init",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "vndservicemanager.rc",
-    src: "vndservicemanager.rc",
+    name: "init.target.rc",
+    src: "init.target.rc",
     sub_dir: "init",
     vendor: true,
 }

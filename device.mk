@@ -39,19 +39,19 @@ AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     FILESYSTEM_TYPE_vendor=erofs
 
-# CORE BOOT PACKAGES (VERY MINIMAL)
+# CORE BOOT PACKAGES (Minimal & Functional)
 PRODUCT_PACKAGES += \
     init.creek.rc \
+    init.creek.hw.rc \
+    init.target.rc \
     fstab.zram \
-    init.vendor.sensors.rc \
     fstab.default \
+    init.vendor.sensors.rc \
+    init.qti.display_boot.rc \
     logd \
     servicemanager \
     vndservicemanager \
     vold \
-    sh \
-    toolbox \
-    toybox \
     bootanim \
     lmkd
     
@@ -74,6 +74,11 @@ PRODUCT_SOONG_NAMESPACES += \
     
 # VINTF & Compatibility
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+
+# Copy the custom init scripts to the vendor image
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.creek.hw.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.creek.hw.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.target.rc
 
 # Disable OpenMAX legacy media framework used in older Android versions
 TARGET_SUPPORTS_OMX_SERVICE := false
