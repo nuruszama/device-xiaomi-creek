@@ -54,13 +54,6 @@ PRODUCT_PACKAGES += \
     toybox \
     bootanim \
     lmkd
-
-# VINF xml files
-PRODUCT_PACKAGES += \
-    framework_compatibility_matrix.device.xml \
-    manifest_creek.xml \
-    android.hardware.radio.xml \
-    vendor.xiaomi.hardware.xml
     
 # Needed for mounting and storage
 PRODUCT_PACKAGES += \

@@ -142,13 +142,13 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 0x06000000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
 # VINTF Manifests
-DEVICE_MANIFEST_FILE := device/xiaomi/creek/configs/vintf/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
 
 # Include the Xiaomi/Qualcomm specific fragments
-DEVICE_MANIFEST_FILE += $(wildcard device/xiaomi/creek/configs/vintf/manifest/*.xml)
+DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
 
 # Include the Compatibility Matrix
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/xiaomi/creek/configs/vintf/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
 # Security & Android Verified Boot
 BOOT_SECURITY_PATCH := 2026-01-05
@@ -162,3 +162,10 @@ BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_USES_RECOVERY_AS_BOOT := false
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.default
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+
+# Properties
+TARGET_ODM_PROP = $(DEVICE_PATH)/configs/properties/odm.prop
+TARGET_PRODUCT_PROP = $(DEVICE_PATH)/configs/properties/product.prop
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/properties/system.prop
+TARGET_SYSTEM_EXT_PROP = $(DEVICE_PATH)/configs/properties/system_ext.prop
+TARGET_VENDOR_PROP = $(DEVICE_PATH)/configs/properties/vendor.prop
