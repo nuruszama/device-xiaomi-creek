@@ -1,33 +1,40 @@
-# Creek Minimal Boot Init
+# Creek Minimal Boot Init (AIDL Optimized)
 import /vendor/etc/init/hw/init.qti.display_boot.rc
 import /vendor/etc/init/init.vendor.sensors.rc
 
 on early-init
-    # Set log level high for debugging
     loglevel 7
     start ueventd
 
 on init
-    # Generic Android environment setup
+    # Standard environment setup
     export PATH /product/bin:/apex/com.android.runtime/bin:/system/bin:/system/xbin:/vendor/bin:/vendor/xbin
     export ANDROID_BOOTLOGO 1
     export ANDROID_ROOT /system
-    export ANDROID_ASSETS /system/app
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
 
+    # Start Service Manager earlier for AIDL HAL registration
+    start servicemanager
+
 on fs
-    # This triggers the mounting of partitions defined in your fstab.default
     mount_all /vendor/etc/fstab.default --early
 
 on post-fs-data
-    # Required for logd to start writing to /data
     mkdir /data/log 0770 root log
     start logd
+    
+    # Start hwservicemanager ONLY if you still have legacy HIDL HALs
+    # For a pure AIDL device, this is increasingly optional but usually kept for compatibility.
+    start hwservicemanager
 
 on boot
-    start servicemanager
+    # Vold is required for mounting /data and handling encrypted volumes
     start vold
-    # Try to get the boot animation rolling
+    
+    # Set properties to allow AIDL display services to start bootanim
     setprop debug.sf.nobootanimation 0
     start bootanim
+
+on property:sys.boot_completed=1
+    swapon_all /vendor/etc/fstab.zram
