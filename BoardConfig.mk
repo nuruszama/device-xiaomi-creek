@@ -150,6 +150,9 @@ DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
 # Include the Compatibility Matrix
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/vintf/compatibility_matrix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/compatibility_matrix.xml
+
 # Security & Android Verified Boot
 BOOT_SECURITY_PATCH := 2026-01-05
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
