@@ -77,8 +77,8 @@ PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Copy the custom init scripts to the vendor image
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.creek.hw.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.creek.hw.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.target.rc
+    $(LOCAL_PATH)/rootdir/init.creek.hw.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.creek.hw.rc \
+    $(LOCAL_PATH)/rootdir/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.target.rc
 
 # Disable OpenMAX legacy media framework used in older Android versions
 TARGET_SUPPORTS_OMX_SERVICE := false
