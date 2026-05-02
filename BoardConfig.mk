@@ -9,10 +9,7 @@ KERNEL_PATH := $(DEVICE_PATH)-kernel
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
 BOARD_SHIPPING_API_LEVEL := 35
 BUILD_BROKEN_DUP_RULES := true
-
-# Remove ALL system/vendor complexity
-SOONG_ALLOW_MISSING_DEPENDENCIES := true
-BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
 
 # Tell the build system to ignore missing dexpreopt artifacts
 DISABLE_DEXPREOPT_CHECK := true
@@ -149,9 +146,6 @@ DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
 
 # Include the Compatibility Matrix
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vintf/compatibility_matrix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/compatibility_matrix.xml
 
 # Security & Android Verified Boot
 BOOT_SECURITY_PATCH := 2026-01-05
