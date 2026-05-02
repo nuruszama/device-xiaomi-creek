@@ -8,8 +8,13 @@ KERNEL_PATH := $(DEVICE_PATH)-kernel
 # Android 16 Build Environment
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
 BOARD_SHIPPING_API_LEVEL := 35
+
+# Broken Rules (Required for blob compatibility) 
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_PREBUILT_UI_HAL := true
+BUILD_BROKEN_MISSING_PGO_STATS := true
 
 # Tell the build system to ignore missing dexpreopt artifacts
 DISABLE_DEXPREOPT_CHECK := true
