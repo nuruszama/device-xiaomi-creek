@@ -124,6 +124,7 @@ BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_EROFS_PAGESIZE := 4096
 BOARD_EROFS_PCLUSTER_SIZE := 262144
@@ -146,14 +147,17 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 # Add removable storage support
 BOARD_HAS_REMOVABLE_STORAGE := true 
 
-# VINTF Manifests
+# VINTF Manifests & Compatibility
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
-
-# Include the Xiaomi/Qualcomm specific fragments
 DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
 
-# Include the Compatibility Matrix
+# Framework & Network Manifests (Added from Topaz)
+DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
+
+# Use both local and common Qualcomm matrices
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
+DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
 
 # Security & Android Verified Boot
 BOOT_SECURITY_PATCH := 2026-01-05
@@ -162,6 +166,40 @@ BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+
+# AVB Algorithms & Keys
+BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 4
+
+BOARD_AVB_DTBO_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_DTBO_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_DTBO_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_DTBO_ROLLBACK_INDEX_LOCATION := 3
+
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+
+BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 5
+
+# VBMETA System Configuration
+BOARD_AVB_VBMETA_SYSTEM := product system system_dlkm system_ext
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+
+# Use sha256 hash algorithm for system_dlkm partition
+BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 # Safe Recovery / Fastbootd
 BOARD_USES_RECOVERY_AS_BOOT := false
@@ -174,3 +212,10 @@ TARGET_PRODUCT_PROP = $(DEVICE_PATH)/configs/properties/product.prop
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/properties/system.prop
 TARGET_SYSTEM_EXT_PROP = $(DEVICE_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP = $(DEVICE_PATH)/configs/properties/vendor.prop
+
+# SePolicy
+include device/qcom/sepolicy_vndr/SEPolicy.mk
+
+# Display
+TARGET_SCREEN_DENSITY := 420
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
