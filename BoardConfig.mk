@@ -148,7 +148,9 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_HAS_REMOVABLE_STORAGE := true 
 
 # VINTF Manifests & Compatibility
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
+DEVICE_MANIFEST_FILE += \
+    $(DEVICE_PATH)/configs/vintf/manifest.xml \
+    $(DEVICE_PATH)/configs/vintf/network_manifest.xml
 DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
 
 # Framework & Network Manifests (Added from Topaz)
