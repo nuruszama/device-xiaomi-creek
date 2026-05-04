@@ -1,5 +1,7 @@
 #
-# Minimal Boot Test BoardConfig.mk (Creek)
+# Copyright (C) 2023 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
 #
 
 DEVICE_PATH := device/xiaomi/creek
@@ -144,30 +146,14 @@ BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 0x00800000
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 0x06000000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-# Add removable storage support
-BOARD_HAS_REMOVABLE_STORAGE := true 
-
-# VINTF Manifests & Compatibility
-DEVICE_MANIFEST_FILE += \
-    $(DEVICE_PATH)/configs/vintf/manifest.xml \
-    $(DEVICE_PATH)/configs/vintf/network_manifest.xml
-DEVICE_MANIFEST_FILE += $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
-
-# Framework & Network Manifests (Added from Topaz)
-DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
-
-# Use both local and common Qualcomm matrices
-DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
-DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
-
-# Security & Android Verified Boot
-BOOT_SECURITY_PATCH := 2026-01-05
+# Security
+BOOT_SECURITY_PATCH := 2026-02-03
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
+
+# Android Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
-BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 
 # AVB Algorithms & Keys
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
@@ -205,7 +191,7 @@ BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 # Safe Recovery / Fastbootd
 BOARD_USES_RECOVERY_AS_BOOT := false
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.default
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.default
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Properties
@@ -215,9 +201,50 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/properties/system.prop
 TARGET_SYSTEM_EXT_PROP = $(DEVICE_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP = $(DEVICE_PATH)/configs/properties/vendor.prop
 
+# VINTF Manifests & Compatibility
+DEVICE_MANIFEST_FILE += \
+    $(DEVICE_PATH)/configs/vintf/manifest.xml \
+    $(DEVICE_PATH)/configs/vintf/network_manifest.xml
+
+DEVICE_MANIFEST_FILE += \
+    $(wildcard $(DEVICE_PATH)/configs/vintf/manifest/*.xml)
+
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+    $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
+
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml \
+    hardware/lineage/interfaces/compatibility_matrices/compatibility_matrix.lineage.xml    
+
+DEVICE_MATRIX_FILE += \
+    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml \
+    hardware/qcom-caf/common/compatibility_matrix.xml
+
 # SePolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
+include device/xiaomi/sepolicy/SEPolicy.mk
 
 # Display
 TARGET_SCREEN_DENSITY := 420
 TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
+
+# Add removable storage support
+BOARD_HAS_REMOVABLE_STORAGE := true
+
+# RIL
+ENABLE_VENDOR_RIL_SERVICE := true
+
+# WiFi
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER := $(BOARD_HOSTAPD_DRIVER)
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := $(BOARD_HOSTAPD_PRIVATE_LIB)
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB_EVENT := "ON"
+CONFIG_IEEE80211AX := true
+WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
+WIFI_DRIVER_STATE_OFF := "OFF"
+WIFI_DRIVER_STATE_ON := "ON"
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
+WPA_SUPPLICANT_VERSION := VER_0_8_X
