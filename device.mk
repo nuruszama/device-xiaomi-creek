@@ -29,15 +29,27 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
-# A/B OTA minimal config
+# A/B OTA config
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=erofs
+    FILESYSTEM_TYPE_system=erofs \
+    POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
-    FILESYSTEM_TYPE_vendor=erofs
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=erofs \
+    POSTINSTALL_OPTIONAL_vendor=true
+
+PRODUCT_PACKAGES += \
+    checkpoint_gc \
+    e2fsck.recovery \
+    otapreopt_script
+
+# AAPT
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # CORE BOOT PACKAGES (Minimal & Functional)
 PRODUCT_PACKAGES += \
@@ -55,11 +67,6 @@ PRODUCT_PACKAGES += \
     bootanim \
     lmkd
     
-# Needed for mounting and storage
-PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    e2fsck.recovery
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.qti \
